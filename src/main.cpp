@@ -1,3 +1,19 @@
+/* 
+    CARLOS GONZÁLEZ VAN LIEMPT - JUAN CARLOS JIMÉNEZ  --  | La Biblioteca |   --   
+
+            *Requisitos
+               _ Alojar 20(libros) con su info.
+                   ^Tener control de que libros están disponibles o no, y saber quién los tiene
+               _ Tener un registro de usuario con datos e historial
+                   ^Nombre,apellidos,dni,Libro que tiene ahora, Historial,...
+            *Funciones
+               _Comprobar libros disponibles
+               _Ver historial de libros de una persona
+               _Ver si una persona tiene un libro o no
+               _Sacar/Devolver Libro
+
+*/
+
 #include <iostream>
 #include <fstream>
 #include <stdlib.h>
@@ -20,9 +36,21 @@ void escribirEnFichero(){
     archivo.close();
 }
 
+//------------------------------------------------------------------------------------
+
 int main(){
-    escribirEnFichero();
+    bool salirMenuMain = false;
+    int opcionMenuMain;
+    do{
+        cout<<"\n\n\n------------ La Biblioteca ------------"<<endl
+                <<"0 - Listado de Libros" 
+                <<"1 - Listado de Usuarios"
+                <<"3 - Historial de Lectura";
+
+    }while(!salirMenuMain==false);
+
+   // escribirEnFichero();
  cout<<"Hola Mundo\n";
- cout<<"Esto si funciona";
+
  return 0;
-};
+}
