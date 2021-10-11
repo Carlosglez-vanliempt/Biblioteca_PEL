@@ -29,6 +29,8 @@ void escribirEnFichero();
 //------------------------------------------------------------------------------------
 
 int main(){
+
+    persona p1 = persona();
     int opcionInicioSesion;
     do{
         cout<<"\n\n\n------------ La Biblioteca ------------"<<endl
