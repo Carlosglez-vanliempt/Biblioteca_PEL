@@ -20,7 +20,50 @@
 
 using namespace std;
 
+//Funciones Declaradas
+
 void escribirEnFichero();
+
+
+
+//------------------------------------------------------------------------------------
+
+int main(){
+    int opcionInicioSesion;
+    do{
+        cout<<"\n\n\n------------ La Biblioteca ------------"<<endl
+                <<"-Bienvenido!" <<endl
+                <<"1 - Iniciar sesión"<<endl
+                <<"2 - Registrase"<<endl
+                <<"3 - Salir"<<endl
+                <<"-->";
+            cin >> opcionInicioSesion;
+
+        switch (opcionInicioSesion)
+        {
+        case 1:
+            
+            break;
+        case 2:
+            
+            break;
+         case 3:
+            cout<<"Hasta luego...";
+            break;
+        default:
+            cout<<"Valor incorrecto..., Revise.";
+            break;
+        }
+
+    }while(!opcionInicioSesion==3);
+
+
+ return 0;
+}
+
+//-------------------------------------------------------------------------------------
+
+//Funciones Definidas
 
 void escribirEnFichero(){
     ofstream archivo;
@@ -34,23 +77,4 @@ void escribirEnFichero(){
     archivo<<"El Quijote de la mancha";
 
     archivo.close();
-}
-
-//------------------------------------------------------------------------------------
-
-int main(){
-    bool salirMenuMain = false;
-    int opcionMenuMain;
-    do{
-        cout<<"\n\n\n------------ La Biblioteca ------------"<<endl
-                <<"0 - Listado de Libros" 
-                <<"1 - Listado de Usuarios"
-                <<"3 - Historial de Lectura";
-
-    }while(!salirMenuMain==false);
-
-   // escribirEnFichero();
- cout<<"Hola Mundo\n";
-
- return 0;
 }
