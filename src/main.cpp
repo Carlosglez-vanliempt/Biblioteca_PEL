@@ -1,5 +1,5 @@
 /* 
-    CARLOS GONZÁLEZ VAN LIEMPT - JUAN CARLOS JIMÉNEZ  --  | La Biblioteca |   --   
+    CARLOS GONZÁLEZ VAN LIEMPT - JUAN CARLOS SÁNCHEZ  --  | La Biblioteca |   --   
 
             *Requisitos
                _ Alojar 20(libros) con su info.
