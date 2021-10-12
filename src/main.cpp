@@ -49,8 +49,8 @@ int main(){
                 <<"2 - Registrase"<<endl
                 <<"3 - Salir"<<endl
                 <<"-->";
-                contarfilas("login.txt");
-                system("pause");
+               //contarfilas("login.txt");
+
             cin >> opcionInicioSesion;
 
         switch (opcionInicioSesion)
