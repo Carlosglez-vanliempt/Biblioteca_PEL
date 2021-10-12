@@ -24,8 +24,10 @@ using namespace std;
 //Funciones Declaradas
 
 void crearFichero(string);
-void escribirEnFichero(string);
-void leerFichero();
+void escribirEnFichero(string,string);
+void leerFicheroLogin();
+int contarfilas(string);
+int contarcolumnas(string);
 
 
 
@@ -39,7 +41,7 @@ int main(){
         string nombre;
         string apellido;
         string contraseña;
-        string inicioSesion[0][1];
+        string matrizLogin[0][1];
     do{
         cout<<"\n\n\n------------ La Biblioteca ------------"<<endl
                 <<"-Bienvenido!" <<endl
@@ -47,25 +49,25 @@ int main(){
                 <<"2 - Registrase"<<endl
                 <<"3 - Salir"<<endl
                 <<"-->";
+               // contarfilas("login.txt");
             cin >> opcionInicioSesion;
 
         switch (opcionInicioSesion)
         {
         case 1:
         if(!archivo.is_open()){
-             escribirEnFichero("login");
+             escribirEnFichero("login","DNI;contraseña");
         }  
              cout<<"\n\n\n------------ La Biblioteca ------------"<<endl
         <<"\tLogin"<<endl
         <<"DNI:"<<endl
         <<"->;";
-        
-        leerFichero();
+        cin>>matrizLogin[1][1];
+        leerFicheroLogin();
         cout<<"\n\n\n------------ La Biblioteca ------------"<<endl
         <<"\tLogin"<<endl
         <<"Contraseña:"<<endl
         <<"->";
-        cin>>(char*)Login[0].contraseña.c_str();
        // cin>>contraseña;
             break;
         case 2:
@@ -101,34 +103,38 @@ int main(){
 
 void crearFichero(string nombreArchivo){
     ofstream archivo;
-    archivo.open(nombreArchivo+".txt",ios::out);
+    archivo.open(nombreArchivo,ios::out);
 
-    if(archivo.fail()){
-        cout<<"No se pudo abrir el archivo";
-        exit(1);
-    }
+    if(archivo.fail()){cout<<"No se pudo abrir el archivo";exit(1);}
 }
 
-void escribirEnFichero(string nombreArchivo){
+void escribirEnFichero(string nombreArchivo,string texto){
     ofstream archivo;
 
-    archivo.open(nombreArchivo+".txt",ios::out);
+    archivo.open(nombreArchivo,ios::out);
 
-    if(archivo.fail()){
-        cout<<"No se pudo abrir el archivo";
-        exit(1);
-    }
+    if(archivo.fail()){cout<<"No se pudo abrir el archivo";exit(1);}
 
       archivo.close();
 }
 
-void leerfichero(string nombreArchivo){
+void leerficheroLogin(string nombreArchivo){
     ifstream archivo;
+    string fichero[2][1];
 
-    archivo.open(nombreArchivo+".txt",ios::in);
+    archivo.open(nombreArchivo,ios::in);
+    if(archivo.fail()){cout<<"No se pudo leer el archivo";exit(1);}
 
-    if(archivo.fail()){
-        cout<<"No se pudo leer el archivo";
-        exit(1);
+}
+
+int contarfilas(string nombreArchivo){
+    ifstream archivo;
+    int contador=0;
+    archivo.open(nombreArchivo,ios::in);
+    if(archivo.fail()){cout<<"No se ha podido contar las filas del archivo";exit(1);}
+    while(archivo.eof()){
+        contador++;
     }
+    cout<<contador;
+    return contador;
 }
