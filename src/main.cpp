@@ -26,8 +26,6 @@ using namespace std;
 void crearFichero(string);
 void escribirEnFichero(string);
 void leerFichero();
-string menuInicioSesion();
-string registrarse();
 
 
 
@@ -37,8 +35,18 @@ int main(){
 
     int opcionInicioSesion;
     std::ifstream archivo ("login.txt");
-    string usuario;
-    string contraseña;
+    struct usuarioLogin{
+        string dni;
+        string contraseña;
+    };
+    struct usuario{
+        string dni;
+        string nombre;
+        string apellido;
+        string contraseña;
+    };
+    struct usuarioLogin Login[1];
+    struct usuario Usuario[4];
     do{
         cout<<"\n\n\n------------ La Biblioteca ------------"<<endl
                 <<"-Bienvenido!" <<endl
@@ -54,13 +62,30 @@ int main(){
         if(!archivo.is_open()){
              escribirEnFichero("login");
         }  
-            menuInicioSesion();
+             cout<<"\n\n\n------------ La Biblioteca ------------"<<endl
+        <<"\tLogin"<<endl
+        <<"DNI:"<<endl
+        <<"->;";
+        cin>>(char*)Login[0].dni.c_str();
+        leerFichero();
+        cout<<"\n\n\n------------ La Biblioteca ------------"<<endl
+        <<"\tLogin"<<endl
+        <<"Contraseña:"<<endl
+        <<"->";
+        cin>>(char*)Login[0].contraseña.c_str();
+       // cin>>contraseña;
             break;
         case 2:
-           menuRegistrarse(usuario, contraseña);
-           cout<<usuario;
-           cout<<contraseña;
-           system("pause");
+        cout<<"\n\n\n------------ La Biblioteca ------------"<<endl
+        <<"\tRegister"<<endl
+        <<"Usuario:"<<endl
+        <<"->";
+       // cin>>usuario;
+        cout<<"\n\n\n------------ La Biblioteca ------------"<<endl
+        <<"\tRegister"<<endl
+        <<"Contraseña:"<<endl
+        <<"->";
+       // cin>>contraseña;
 
             break;
          case 3:
@@ -113,42 +138,4 @@ void leerfichero(string nombreArchivo){
         cout<<"No se pudo leer el archivo";
         exit(1);
     }
-}
-
-string menuInicioSesion(){
-    string usuario;
-    string contraseña;
-    do{
-        cout<<"\n\n\n------------ La Biblioteca ------------"<<endl
-        <<"\tLogin"<<endl
-        <<"Usuario:"<<endl
-        <<"->";
-        cin>>usuario;
-        cout<<"\n\n\n------------ La Biblioteca ------------"<<endl
-        <<"\tLogin"<<endl
-        <<"Contraseña:"<<endl
-        <<"->";
-        cin>>contraseña;
-    }while(usuario!="4"||contraseña!="4");
-
-    return usuario,contraseña;
-}
-string menuRegistrarse(){
-    string usuario;
-    string contraseña;
-    do{
-        cout<<"\n\n\n------------ La Biblioteca ------------"<<endl
-        <<"\tLogin"<<endl
-        <<"Usuario:"<<endl
-        <<"->";
-        cin>>usuario;
-        cout<<"\n\n\n------------ La Biblioteca ------------"<<endl
-        <<"\tLogin"<<endl
-        <<"Contraseña:"<<endl
-        <<"->";
-        cin>>contraseña;
-    }while(usuario!="4"||contraseña!="4");
-
-    return usuario,contraseña;
-
 }
