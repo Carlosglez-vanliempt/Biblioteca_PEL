@@ -25,7 +25,7 @@ using namespace std;
 
 void crearFichero(string);
 void escribirEnFichero(string,string);
-void leerFicheroLogin();
+void leerFicheroLogin(string);
 int contarfilas(string);
 int contarcolumnas(string);
 
@@ -49,7 +49,8 @@ int main(){
                 <<"2 - Registrase"<<endl
                 <<"3 - Salir"<<endl
                 <<"-->";
-               // contarfilas("login.txt");
+                contarfilas("login.txt");
+                system("pause");
             cin >> opcionInicioSesion;
 
         switch (opcionInicioSesion)
@@ -62,25 +63,25 @@ int main(){
         <<"\tLogin"<<endl
         <<"DNI:"<<endl
         <<"->;";
-        cin>>matrizLogin[1][1];
-        leerFicheroLogin();
+       // cin>>matrizLogin[1][1];
+        //leerFicheroLogin();
         cout<<"\n\n\n------------ La Biblioteca ------------"<<endl
         <<"\tLogin"<<endl
         <<"Contraseña:"<<endl
         <<"->";
-       // cin>>contraseña;
+       
             break;
         case 2:
         cout<<"\n\n\n------------ La Biblioteca ------------"<<endl
         <<"\tRegister"<<endl
         <<"Usuario:"<<endl
         <<"->";
-       // cin>>usuario;
+      
         cout<<"\n\n\n------------ La Biblioteca ------------"<<endl
         <<"\tRegister"<<endl
         <<"Contraseña:"<<endl
         <<"->";
-       // cin>>contraseña;
+    
 
             break;
          case 3:
@@ -132,7 +133,7 @@ int contarfilas(string nombreArchivo){
     int contador=0;
     archivo.open(nombreArchivo,ios::in);
     if(archivo.fail()){cout<<"No se ha podido contar las filas del archivo";exit(1);}
-    while(archivo.eof()){
+    while(!archivo.eof()){
         contador++;
     }
     cout<<contador;
