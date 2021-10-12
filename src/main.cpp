@@ -35,18 +35,11 @@ int main(){
 
     int opcionInicioSesion;
     std::ifstream archivo ("login.txt");
-    struct usuarioLogin{
-        string dni;
-        string contraseña;
-    };
-    struct usuario{
         string dni;
         string nombre;
         string apellido;
         string contraseña;
-    };
-    struct usuarioLogin Login[1];
-    struct usuario Usuario[4];
+        string inicioSesion[0][1];
     do{
         cout<<"\n\n\n------------ La Biblioteca ------------"<<endl
                 <<"-Bienvenido!" <<endl
@@ -66,7 +59,7 @@ int main(){
         <<"\tLogin"<<endl
         <<"DNI:"<<endl
         <<"->;";
-        cin>>(char*)Login[0].dni.c_str();
+        
         leerFichero();
         cout<<"\n\n\n------------ La Biblioteca ------------"<<endl
         <<"\tLogin"<<endl
