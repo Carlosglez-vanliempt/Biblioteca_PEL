@@ -22,7 +22,10 @@ using namespace std;
 
 //Funciones Declaradas
 
-void escribirEnFichero();
+void crearFichero(string);
+void escribirEnFichero(string);
+void leerFichero();
+string menuInicioSesion();
 
 
 
@@ -30,8 +33,8 @@ void escribirEnFichero();
 
 int main(){
 
-    persona p1 = persona();
     int opcionInicioSesion;
+    std::ifstream archivo ("login.txt");
     do{
         cout<<"\n\n\n------------ La Biblioteca ------------"<<endl
                 <<"-Bienvenido!" <<endl
@@ -44,7 +47,11 @@ int main(){
         switch (opcionInicioSesion)
         {
         case 1:
+        if(!archivo.is_open()){
             
+        }
+            escribirEnFichero("login");
+            menuInicioSesion();
             break;
         case 2:
             
@@ -67,16 +74,53 @@ int main(){
 
 //Funciones Definidas
 
-void escribirEnFichero(){
+void crearFichero(string nombreArchivo){
     ofstream archivo;
-
-    archivo.open("libros.txt",ios::out);
+    archivo.open(nombreArchivo+".txt",ios::out);
 
     if(archivo.fail()){
         cout<<"No se pudo abrir el archivo";
         exit(1);
     }
-    archivo<<"El Quijote de la mancha";
+}
 
-    archivo.close();
+void escribirEnFichero(string nombreArchivo){
+    ofstream archivo;
+
+    archivo.open(nombreArchivo+".txt",ios::out);
+
+    if(archivo.fail()){
+        cout<<"No se pudo abrir el archivo";
+        exit(1);
+    }
+
+      archivo.close();
+}
+
+void leerfichero(string nombreArchivo){
+    ifstream archivo;
+
+    archivo.open(nombreArchivo+".txt",ios::in);
+
+    if(archivo.fail()){
+        cout<<"No se pudo leer el archivo";
+        exit(1);
+    }
+}
+
+string menuInicioSesion(){
+    string usuario;
+    string contraseña;
+    do{
+        cout<<"\n\n\n------------ La Biblioteca ------------"<<endl
+        <<"Usuario:"<<endl
+        <<"->";
+        cin>>usuario;
+        cout<<"\n\n\n------------ La Biblioteca ------------"<<endl
+        <<"Contraseña:"<<endl
+        <<"->";
+        cin>>contraseña;
+    }while(usuario!="4"||contraseña!="4");
+
+    return usuario,contraseña;
 }
