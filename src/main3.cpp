@@ -58,7 +58,7 @@ int main()
                     // Imprimimos
                     cout << "========================================" << endl;
                     cout << "Usted ha ALQUILADO " << articulos[indice] << " X " << cantidad << endl;
-                    cout << "Total: " << total << endl;
+                   // cout << "Total: " << total << endl;
                     cout << "GRACIAS POR SU ALQUILER" << endl;
                     cout << "========================================" << endl;
                     // Y restamos la cantidad en el arreglo
@@ -68,8 +68,8 @@ int main()
             else
             {
                 // Caso contrario, imprimimos que no es un artículo válido
-                cout << "Número de artículo " << numeroArticulo << " inválido" << endl;
+               // cout << "Número de artículo " << numeroArticulo << " inválido" << endl;
             }
         }
-    }
+    
 }
