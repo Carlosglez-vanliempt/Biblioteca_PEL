@@ -17,6 +17,7 @@
 #include <iostream>
 #include <fstream>
 #include <stdlib.h>
+#include <cstdlib>
 
 using namespace std;
 
@@ -26,6 +27,7 @@ void crearFichero(string);
 void escribirEnFichero(string);
 void leerFichero();
 string menuInicioSesion();
+string registrarse();
 
 
 
@@ -35,6 +37,8 @@ int main(){
 
     int opcionInicioSesion;
     std::ifstream archivo ("login.txt");
+    string usuario;
+    string contraseña;
     do{
         cout<<"\n\n\n------------ La Biblioteca ------------"<<endl
                 <<"-Bienvenido!" <<endl
@@ -48,13 +52,16 @@ int main(){
         {
         case 1:
         if(!archivo.is_open()){
-            
-        }
-            escribirEnFichero("login");
+             escribirEnFichero("login");
+        }  
             menuInicioSesion();
             break;
         case 2:
-            
+           menuRegistrarse(usuario, contraseña);
+           cout<<usuario;
+           cout<<contraseña;
+           system("pause");
+
             break;
          case 3:
             cout<<"Hasta luego...";
@@ -113,14 +120,35 @@ string menuInicioSesion(){
     string contraseña;
     do{
         cout<<"\n\n\n------------ La Biblioteca ------------"<<endl
+        <<"\tLogin"<<endl
         <<"Usuario:"<<endl
         <<"->";
         cin>>usuario;
         cout<<"\n\n\n------------ La Biblioteca ------------"<<endl
+        <<"\tLogin"<<endl
         <<"Contraseña:"<<endl
         <<"->";
         cin>>contraseña;
     }while(usuario!="4"||contraseña!="4");
 
     return usuario,contraseña;
+}
+string menuRegistrarse(){
+    string usuario;
+    string contraseña;
+    do{
+        cout<<"\n\n\n------------ La Biblioteca ------------"<<endl
+        <<"\tLogin"<<endl
+        <<"Usuario:"<<endl
+        <<"->";
+        cin>>usuario;
+        cout<<"\n\n\n------------ La Biblioteca ------------"<<endl
+        <<"\tLogin"<<endl
+        <<"Contraseña:"<<endl
+        <<"->";
+        cin>>contraseña;
+    }while(usuario!="4"||contraseña!="4");
+
+    return usuario,contraseña;
+
 }
