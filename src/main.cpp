@@ -20,6 +20,7 @@
 #include <cstdlib>
 #include <algorithm>
 #include <vector>
+#include <stdio.h>
 
 using namespace std;
 
@@ -55,27 +56,49 @@ int main(){
         string linea;
         size_t posicion;
         int contador=0;
-        string matrizFichero[20][2]={
-        {"Luces_De_Bohemia","8423913074"},
-        {"Cien_Años_De_Soledad","8425536001871"},
-        {"Don_Quijote_De_La_Mancha","8415171803"},
-        {"Historia_De_Dos_Ciudades","8416827095"},
-        {"El_Señor_De_Los_Anillos","8845292614"},
-        {"El_Principito","9788683737475"},
-        {"El_Hobbit","9780044403371"},
-        {"Sueño_En_El_Pabellon_Rojo","9781616120351"},
-        {"Triple_Representativa","9788497593120"},
-        {"Ella","9786074716863"},
-        {"El_Codigo_De_Vinci","8495618605"},
-        {"El_Alquimista","0062511408"},
-        {"El_Guardian_Entre_El_Centeno","7543321726"},
-        {"El_Camino_A_Cristo","9798629671299"},
-        {"Heidi","1603400311"},
-        {"Ana_De_Las_Tejas_Verdes","8427211902"},
-        {"Azabache","9788417512491"},
-        {"El_Nombre_De_La_Rosa","9788490628942"},
-        {"La_Orquidia_Azul","9788494315961"},
-        {"Las_Polillas_Y_La_Luz","9781543329704"}};
+        string matrizNombres[20][1]={
+        {"Luces_De_Bohemia"},
+        {"Cien_Años_De_Soledad"},
+        {"Don_Quijote_De_La_Mancha"},
+        {"Historia_De_Dos_Ciudades"},
+        {"El_Señor_De_Los_Anillos"},
+        {"El_Principito"},
+        {"El_Hobbit"},
+        {"Sueño_En_El_Pabellon_Rojo"},
+        {"Triple_Representativa"},
+        {"Ella"},
+        {"El_Codigo_De_Vinci"},
+        {"El_Alquimista"},
+        {"El_Guardian_Entre_El_Centeno"},
+        {"El_Camino_A_Cristo"},
+        {"Heidi"},
+        {"Ana_De_Las_Tejas_Verdes"},
+        {"Azabache"},
+        {"El_Nombre_De_La_Rosa"},
+        {"La_Orquidia_Azul"},
+        {"Las_Polillas_Y_La_Luz"}};
+
+        string matrizISBN[20][1]={
+        {"8423913074"},
+        {"8425536001871"},
+        {"8415171803"},
+        {"8416827095"},
+        {"8845292614"},
+        {"9788683737475"},
+        {"9780044403371"},
+        {"9781616120351"},
+        {"9788497593120"},
+        {"8495618605"},
+        {"9786074716863"},
+        {"0062511408"},
+        {"7543321726"},
+        {"9798629671299"},
+        {"1603400311"},
+        {"8427211902"},
+        {"9788417512491"},
+        {"9788490628942"},
+        {"9788494315961"},
+        {"9781543329704"}};
         
     do{
         do{
