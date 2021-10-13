@@ -27,7 +27,6 @@ using namespace std;
 
 void crearFichero(string);
 void escribirEnFichero(string,string);
-void leerFicheroLogin(string);
 int contarfilas(string);
 int contarcolumnas(string);
 char menuMain();
@@ -56,7 +55,28 @@ int main(){
         string linea;
         size_t posicion;
         int contador=0;
-        string matrizFichero[contarfilas("login.txt")][contarcolumnas("login.txt")];
+        string matrizFichero[20][2]={
+        {"Luces_De_Bohemia","8423913074"},
+        {"Cien_Años_De_Soledad","8425536001871"},
+        {"Don_Quijote_De_La_Mancha","8415171803"},
+        {"Historia_De_Dos_Ciudades","8416827095"},
+        {"El_Señor_De_Los_Anillos","8845292614"},
+        {"El_Principito","9788683737475"},
+        {"El_Hobbit","9780044403371"},
+        {"Sueño_En_El_Pabellon_Rojo","9781616120351"},
+        {"Triple_Representativa","9788497593120"},
+        {"Ella","9786074716863"},
+        {"El_Codigo_De_Vinci","8495618605"},
+        {"El_Alquimista","0062511408"},
+        {"El_Guardian_Entre_El_Centeno","7543321726"},
+        {"El_Camino_A_Cristo","9798629671299"},
+        {"Heidi","1603400311"},
+        {"Ana_De_Las_Tejas_Verdes","8427211902"},
+        {"Azabache","9788417512491"},
+        {"El_Nombre_De_La_Rosa","9788490628942"},
+        {"La_Orquidia_Azul","9788494315961"},
+        {"Las_Polillas_Y_La_Luz","9781543329704"}};
+        
     do{
         do{
           cout<<"\n------------ La Biblioteca ------------"<<endl
@@ -113,18 +133,6 @@ void escribirEnFichero(string nombreArchivo,string texto){
       archivo.close();
 }
 
-void leerficheroLogin(string nombreArchivo){
-    ifstream archivo(nombreArchivo);
-   // string fichero[contarfilas(nombreArchivo)][contarcolumnas(nombreArchivo)];
-     if(archivo.fail()){cout<<"No se pudo leer el archivo";exit(1);}
-    char linea [128];
-        while(!archivo.eof()){
-            archivo >> linea;
-            cout<<linea<<endl;
-        }
-        archivo.close();
-}
-
 int contarfilas(string nombreArchivo){
     ifstream archivo(nombreArchivo);
     int contador_lineas=0;
@@ -160,8 +168,8 @@ cout<<"\n***************\n";
    cout<<"\n A) captura de libros\n";
    cout<<"\n B) Buscar un libro\n";
    cout<<"\n C) Muestra el inventario \n";
-   cout<<
-   cout<<"\n D) Salir";
+   cout<<"\n D) Muestra los usuarios \n";
+   cout<<"\n E) Salir";
    cout<<"\n Opcion :";  
    cin>> opcion;
    opcion = toupper(opcion);
@@ -180,8 +188,10 @@ void casos(int opcion)
             break ; 
         case 'C' :
              mostrarLibros(); 
-            break ; 
+            break ;
         case 'D' :
+            break;
+        case 'E' :
             cout << "\n Hasta luego! \n Gracias por usar nuestro programa!\n";  
             break ; 
         default :
@@ -213,18 +223,12 @@ void captura(){
  
          cout<<"Quieres seguir buscando?...\n Si=1/No=0\n";
          cin>>P;
- 
- 
- 
+
           }while(P != 0) ;
- 
- 
   system("cls");
- 
+
   return ; 
 }  
- 
- 
  
 void buscar()
  {
@@ -243,13 +247,8 @@ void buscar()
              }
         }
  
- 
- 
    return  ; 
- 
- 
- 
- 
+   
      }
 void mostrarLibros() 
  {
