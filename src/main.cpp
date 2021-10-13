@@ -33,8 +33,7 @@ int contarcolumnas(string);
 char menuMain();
 void casos(int);
 void gestionLibros(string[20],string[20],string[20],string[20]);
-void buscar();
-void mostrarLibros() ;
+void mostrarLibros(string[20],string[20],string[20],string[20]) ;
 
 
 
@@ -236,10 +235,9 @@ cout<<"\tBienvenido!"<<endl;
 cout<<"\nDepartamento de biblioteca\n";
 cout<<"\n***************\n";
    cout<<"\n A) Gestion de libros\n";
-   cout<<"\n B) Buscar un libro\n";
-   cout<<"\n C) Muestra el inventario \n";
-   cout<<"\n D) Muestra los usuarios \n";
-   cout<<"\n E) Salir";
+   cout<<"\n B) Muestra el inventario \n";
+   cout<<"\n C) Muestra los usuarios \n";
+   cout<<"\n D) Salir";
    cout<<"\n Opcion :";  
    cin>> opcion;
    opcion = toupper(opcion);
@@ -251,17 +249,14 @@ void casos(int opcion,string matrizISBN[20], string matrizNombres[20], string ma
 {
   switch (opcion){
         case 'A' :
-             gestionLibros(matrizISBN[20],matrizNombres[20],matrizDisponibilidad[20],matrizLibros[20]); 
+             gestionLibros(matrizISBN,matrizNombres,matrizDisponibilidad,matrizLibros); 
             break ; 
         case 'B' :
-             buscar(); 
-            break ; 
-        case 'C' :
-             mostrarLibros(); 
+             mostrarLibros(matrizISBN,matrizNombres,matrizDisponibilidad,matrizLibros); 
             break ;
-        case 'D' :
+        case 'C' :
             break;
-        case 'E' :
+        case 'D' :
             cout << "\n Hasta luego! \n Gracias por usar nuestro programa!\n";  
             break ; 
         default :
@@ -273,10 +268,11 @@ return;
 }
  
  
-void gestionLibros(string matrizISBN[20][1],string matrizNombres[20][0],string matrizDisponibilidad[20][0], string matrizLibros[20][0]){
+void gestionLibros(string matrizISBN[20],string matrizNombres[20],string matrizDisponibilidad[20], string matrizLibros[20]){
      int P,Q; 
     string ISBN_A_Buscar;
     bool encontrado=false;
+    bool disponible;
      
      cout<<"\n------------ La Biblioteca ------------\n";
      cout<<"\n Estas en la seccion de gestion de libros \n";
@@ -285,11 +281,14 @@ void gestionLibros(string matrizISBN[20][1],string matrizNombres[20][0],string m
       do{
          cout << "Inserta ISBN\n " ;
          cin >> ISBN_A_Buscar;
-        for(int i=0;matrizISBN[i][0].length();i++){
-            while(matrizISBN[i][0]!=ISBN_A_Buscar){
+        for(int i=0;matrizISBN[i].length();i++){
+            while(matrizISBN[i]!=ISBN_A_Buscar){
                 encontrado=true;
-                if(matrizNombres){
+              //  disponible = matrizDisponibilidad[i];
+                if(disponible=false){
 
+                }else{
+                    cout<<"Este libro se esta cogido por";
                 }
                 
             }
@@ -307,14 +306,15 @@ void gestionLibros(string matrizISBN[20][1],string matrizNombres[20][0],string m
   return ; 
 }  
  
-void mostrarLibros() 
+void mostrarLibros(string matrizISBN[20],string matrizNombres[20],string matrizDisponibilidad[20], string matrizLibros[20]) 
  {
+     cout<<"\n------------ La Biblioteca ------------\n";
      cout<<"\n Estas en la sección de muestra de captura de libros \n";
  
      cout<<"\n **************** \n";
-     for (int x = 0 ; x < 40 ; x++)
+     for (int x = 0 ; x <matrizLibros[20].length() ; x++)
         {
-          cout << "\nLo capturado : " <<  biblio[x];
+          cout<<matrizLibros[x];
          }
    cout<<endl;
    system("pause");
