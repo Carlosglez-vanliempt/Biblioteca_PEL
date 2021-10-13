@@ -18,6 +18,8 @@
 #include <fstream>
 #include <stdlib.h>
 #include <cstdlib>
+#include <algorithm>
+#include <vector>
 
 using namespace std;
 
@@ -33,42 +35,43 @@ int contarcolumnas(string);
 
 //------------------------------------------------------------------------------------
 
-int main(){
-
+int main(){ 
     int opcionInicioSesion;
-    std::ifstream archivo ("login.txt");
+    std::ifstream archivoLogin ("login.txt");
+     while(!archivoLogin.is_open()){ 
+             escribirEnFichero("login.txt","DNI;contraseña");
+        } 
         string dni;
         string nombre;
         string apellido;
         string contraseña;
         string matrizLogin[0][1];
+        string matrizFichero[contarfilas("login.txt")][contarcolumnas("login.txt")];
+
     do{
         cout<<"\n\n\n------------ La Biblioteca ------------"<<endl
                 <<"-Bienvenido!" <<endl
-                <<"1 - Iniciar sesión"<<endl
+                <<"1 - Iniciar sesion"<<endl
                 <<"2 - Registrase"<<endl
                 <<"3 - Salir"<<endl
-                <<"-->";
-               //contarfilas("login.txt");
+                <<"-->"<<endl;
+                cout<<"filas:"<<contarfilas("login.txt")<<endl;
+              cout<<"columnas:"<<contarcolumnas("login.txt")<<endl;
 
             cin >> opcionInicioSesion;
 
         switch (opcionInicioSesion)
         {
+            
         case 1:
-        if(!archivo.is_open()){
-             escribirEnFichero("login","DNI;contraseña");
-        }  
              cout<<"\n\n\n------------ La Biblioteca ------------"<<endl
         <<"\tLogin"<<endl
         <<"DNI:"<<endl
-        <<"->;";
-       // cin>>matrizLogin[1][1];
-        //leerFicheroLogin();
+        <<"->;";cin>>matrizLogin[0][0];
         cout<<"\n\n\n------------ La Biblioteca ------------"<<endl
         <<"\tLogin"<<endl
         <<"Contraseña:"<<endl
-        <<"->";
+        <<"->";cin>>matrizLogin[0][1];
        
             break;
         case 2:
@@ -92,7 +95,7 @@ int main(){
             break;
         }
 
-    }while(!opcionInicioSesion==3);
+    }while(!opcionInicioSesion==1||!opcionInicioSesion==2||!opcionInicioSesion==3);
 
 
  return 0;
@@ -113,29 +116,48 @@ void escribirEnFichero(string nombreArchivo,string texto){
     ofstream archivo;
 
     archivo.open(nombreArchivo,ios::out);
-
+    
     if(archivo.fail()){cout<<"No se pudo abrir el archivo";exit(1);}
 
       archivo.close();
 }
 
 void leerficheroLogin(string nombreArchivo){
-    ifstream archivo;
-    string fichero[2][1];
-
-    archivo.open(nombreArchivo,ios::in);
-    if(archivo.fail()){cout<<"No se pudo leer el archivo";exit(1);}
-
+    ifstream archivo(nombreArchivo);
+    string fichero[contarfilas(nombreArchivo)][contarcolumnas(nombreArchivo)];
+     if(archivo.fail()){cout<<"No se pudo leer el archivo";exit(1);}
+    int i=0;
+    string fila;
+    string array_fila[contarcolumnas(nombreArchivo)];
+    char c [30];
+    while(archivo.getline(c,' ')){
+        fila = archivo.get(c);
+    }
+   
 }
 
 int contarfilas(string nombreArchivo){
-    ifstream archivo;
-    int contador=0;
-    archivo.open(nombreArchivo,ios::in);
+    ifstream archivo(nombreArchivo);
+    int contador_lineas=0;
+    char c [30];
     if(archivo.fail()){cout<<"No se ha podido contar las filas del archivo";exit(1);}
-    while(!archivo.eof()){
-        contador++;
+    while(archivo.getline(c,' ')){
+            contador_lineas++;
     }
-    cout<<contador;
-    return contador;
+    archivo.close();
+    return contador_lineas;
+}
+
+int contarcolumnas(string nombreArchivo)
+{
+    ifstream archivo(nombreArchivo);
+    int contador_colunmas=0;
+    char linea [30];
+    archivo.getline(linea,' ');
+    if(archivo.fail()){cout<<"No se ha podido contar las columnas del archivo";exit(1);}
+     vector<char> v(begin(linea),end(linea));
+    contador_colunmas=count(v.begin(),v.end(),';');
+    contador_colunmas++;
+    return contador_colunmas;
+
 }
