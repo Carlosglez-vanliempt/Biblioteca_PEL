@@ -38,7 +38,7 @@ int contarcolumnas(string);
 int main(){ 
     int opcionInicioSesion;
     std::ifstream archivoLogin ("login.txt");
-     while(!archivoLogin.is_open()){ 
+        while(!archivoLogin.is_open()){ 
              escribirEnFichero("login.txt","DNI;contraseña");
         } 
         string dni;
@@ -47,7 +47,6 @@ int main(){
         string contraseña;
         string matrizLogin[0][1];
         string matrizFichero[contarfilas("login.txt")][contarcolumnas("login.txt")];
-
     do{
         cout<<"\n\n\n------------ La Biblioteca ------------"<<endl
                 <<"-Bienvenido!" <<endl
@@ -55,9 +54,6 @@ int main(){
                 <<"2 - Registrase"<<endl
                 <<"3 - Salir"<<endl
                 <<"-->"<<endl;
-                cout<<"filas:"<<contarfilas("login.txt")<<endl;
-              cout<<"columnas:"<<contarcolumnas("login.txt")<<endl;
-
             cin >> opcionInicioSesion;
 
         switch (opcionInicioSesion)
@@ -72,7 +68,6 @@ int main(){
         <<"\tLogin"<<endl
         <<"Contraseña:"<<endl
         <<"->";cin>>matrizLogin[0][1];
-       
             break;
         case 2:
         cout<<"\n\n\n------------ La Biblioteca ------------"<<endl
@@ -88,6 +83,7 @@ int main(){
 
             break;
          case 3:
+          // leerFicheroLogin("login.txt");
             cout<<"Hasta luego...";
             break;
         default:
@@ -124,16 +120,14 @@ void escribirEnFichero(string nombreArchivo,string texto){
 
 void leerficheroLogin(string nombreArchivo){
     ifstream archivo(nombreArchivo);
-    string fichero[contarfilas(nombreArchivo)][contarcolumnas(nombreArchivo)];
+   // string fichero[contarfilas(nombreArchivo)][contarcolumnas(nombreArchivo)];
      if(archivo.fail()){cout<<"No se pudo leer el archivo";exit(1);}
-    int i=0;
-    string fila;
-    string array_fila[contarcolumnas(nombreArchivo)];
-    char c [30];
-    while(archivo.getline(c,' ')){
-        fila = archivo.get(c);
-    }
-   
+    char linea [128];
+        while(!archivo.eof()){
+            archivo >> linea;
+            cout<<linea<<endl;
+        }
+        archivo.close();
 }
 
 int contarfilas(string nombreArchivo){
@@ -152,7 +146,7 @@ int contarcolumnas(string nombreArchivo)
 {
     ifstream archivo(nombreArchivo);
     int contador_colunmas=0;
-    char linea [30];
+    char linea [40];
     archivo.getline(linea,' ');
     if(archivo.fail()){cout<<"No se ha podido contar las columnas del archivo";exit(1);}
      vector<char> v(begin(linea),end(linea));
